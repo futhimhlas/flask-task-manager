@@ -8,3 +8,14 @@ os.environ.setdefault("SECRET_KEY", "U9DJegKXHY")
 
 # pkill -9 python3 
 To kill all instances of a running app
+
+# pip3 freeze --local > requirements.txt
+Creates txt file with requirements
+
+# echo web: python app.py > Procfile
+Heroku looks for procfile when running. echo cmd overrides this
+
+# Heruko App Names
+Dashes instead of spaces and lower case letters
+
+# 
