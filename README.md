@@ -17,5 +17,13 @@ Heroku looks for procfile when running. echo cmd overrides this
 
 # Heruko App Names
 Dashes instead of spaces and lower case letters
+env.py needs to remain hidden
+its contents is then put in to settings and udner the config var section
 
-# 
+# pip3 install flask-pymongo
+In order to get flask to communicate with mongo
+
+# pip3 install dnspython
+TO use mongo SRV connection string
+
+# requirements.txt needs to be updated after more packages are added
