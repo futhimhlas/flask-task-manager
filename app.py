@@ -1,5 +1,7 @@
 import os
-from flask import Flask 
+from flask import (
+    Flask, flash, render_template, redirect, request,
+    session, url_for) 
 # capitalisation NB here
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -21,9 +23,10 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 # This sets 
 
-@app.route("/") 
+@app.route("/")
+@app.route("/get_tasks")
 # / refers to default root
-def hello():
+def get_tasks():
     return "Hello World ... again!"
 
 
