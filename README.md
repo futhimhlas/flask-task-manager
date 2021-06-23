@@ -26,4 +26,8 @@ In order to get flask to communicate with mongo
 # pip3 install dnspython
 TO use mongo SRV connection string
 
-# requirements.txt needs to be updated after more packages are added
+# requirements.txt 
+needs to be updated after more packages are added
+
+# routing 
+is a string that when we attach it to a url, it will redirect to a particular function within our flask app
