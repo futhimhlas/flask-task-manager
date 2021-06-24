@@ -35,3 +35,12 @@ is a string that when we attach it to a url, it will redirect to a particular fu
 # Templates 
 Flask looks for all HTML template files placed at with a directory at the root level
 called templates
+
+# base.html
+should house all our dependencies and links to other sources that help us to render our page
+
+## Block and elements
+### {% block x_random_name %}
+naming convention for block elements
+use {% extends "base.html" %} to load the stock template
+
