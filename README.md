@@ -44,3 +44,9 @@ should house all our dependencies and links to other sources that help us to ren
 naming convention for block elements
 use {% extends "base.html" %} to load the stock template
 
+# Static
+This directory is a requiremnt for flask and django when storing assets
+# (Gingja url_for)
+## {{ url_for('static', filename='css/style.css') }}
+Used to link to assets within our own project
+
