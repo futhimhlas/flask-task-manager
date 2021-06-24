@@ -21,13 +21,18 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
-# This sets 
+# This sets up an instance of Pymongo
 
 @app.route("/")
 @app.route("/get_tasks")
 # / refers to default root
 def get_tasks():
-    return "Hello World ... again!"
+    # function name should match route decorator
+    tasks = mongo.db.tasks.find() 
+    # our tasks collection from mongo db
+    # finds all docs from tasks collection and then we pass
+    # it thru to our render_template
+    return render_template("tasks.html", tasks=tasks)
 
 
 if __name__ == "__main__":

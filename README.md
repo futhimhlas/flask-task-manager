@@ -31,3 +31,7 @@ needs to be updated after more packages are added
 
 # routing 
 is a string that when we attach it to a url, it will redirect to a particular function within our flask app
+
+# Templates 
+Flask looks for all HTML template files placed at with a directory at the root level
+called templates
