@@ -50,3 +50,6 @@ This directory is a requiremnt for flask and django when storing assets
 ## {{ url_for('static', filename='css/style.css') }}
 Used to link to assets within our own project
 
+## Werkzeug and Flask
+Werkzeug allows for simple to use security features
+

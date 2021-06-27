@@ -6,6 +6,8 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 # Mongodb stores data in JSON like format BSON
+from werkzeug.security import generate_password_hash, check_password_hash
+# Allow us to use werkzeug security features
 if os.path.exists("env.py"):
     #  Here we import env package to use environment variables
     import env 
@@ -33,6 +35,12 @@ def get_tasks():
     # finds all docs from tasks collection and then we pass
     # it thru to our render_template
     return render_template("tasks.html", tasks=tasks)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
+# Creates register.html and assigns it its URL
 
 
 if __name__ == "__main__":
