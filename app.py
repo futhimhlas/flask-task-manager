@@ -66,6 +66,37 @@ def register():
 # Creates register.html and assigns it its URL
 
 
+@app.route("/login", methods=["GET", "POST"])
+# This part of the function tells flask
+# where our page is
+def login():
+    if request.method == "POST":
+        # check if the usernames exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+        # username in form method must match name
+        # attribute
+
+        if existing_user:
+            # truthy
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+            # ensures hashed password matches user input
+            else:
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+            # username doesn't exist
+            
+    return render_template("login.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
