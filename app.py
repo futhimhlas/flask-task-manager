@@ -62,6 +62,8 @@ def register():
 
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
+        # our profile template looks for username var
     return render_template("register.html")
 # Creates register.html and assigns it its URL
 
@@ -84,6 +86,8 @@ def login():
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             # ensures hashed password matches user input
             else:
                 flash("Incorrect Username and/or Password")
@@ -95,6 +99,17 @@ def login():
             # username doesn't exist
             
     return render_template("login.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grabs the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+        # session var in square brackets must be consistent
+        # second set of square brackets make our
+        # search + results more specific
+    return render_template("profile.html", username=username)
 
 
 if __name__ == "__main__":
