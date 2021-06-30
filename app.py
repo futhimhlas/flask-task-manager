@@ -30,7 +30,7 @@ mongo = PyMongo(app)
 # / refers to default root
 def get_tasks():
     # function name should match route decorator
-    tasks = mongo.db.tasks.find() 
+    tasks = list(mongo.db.tasks.find()) 
     # our tasks collection from mongo db
     # finds all docs from tasks collection and then we pass
     # it thru to our render_template
